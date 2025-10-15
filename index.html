@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lash Extensions Booking</title>
+<meta name="description" content="Book your eyelash extensions appointment via WhatsApp. Read booking rules and confirm your slot." />
+<style>
+:root{
+--accent:#25D366;
+--accent-dark:#1ebe5d;
+--bg:#fafafa;
+--card:#ffffff;
+--text:#1d1d1f;
+--muted:#666;
+--radius:12px;
+font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+body{
+margin:0;
+background:linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+color:var(--text);
+-webkit-font-smoothing:antialiased;
+padding:24px;
+display:flex;
+justify-content:center;
+}
+.container{max-width:920px;width:100%;}
+header{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
+.logo{
+width:68px;height:68px;border-radius:14px;background:linear-gradient(135deg,#ffd6e0,#ffe9d6);
+display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#8a2b5a;
+box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+h1{margin:0;font-size:22px;}
+p.lead{margin:6px 0 20px;color:var(--muted);}
+.grid{display:grid;grid-template-columns:1fr 380px;gap:18px;}
+@media (max-width:900px){ .grid{grid-template-columns:1fr} .sidebar{order:-1} }
+
+.card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(13,12,15,0.04);}
+label{display:block;font-size:13px;margin-bottom:6px;color:#222;}
+input[type="text"], input[type="tel"], input[type="date"], input[type="time"], select, textarea{
+width:100%;padding:10px 12px;border-radius:10px;border:1px solid #e6e6e9;background:transparent;
+font-size:14px;box-sizing:border-box;margin-bottom:12px;color:var(--text);
+}
+textarea{min-height:90px;resize:vertical;}
+.row{display:flex;gap:10px;}
+.row > *{flex:1;}
+.terms{font-size:13px;color:var(--muted);max-height:250px;overflow:auto;padding:10px;border-radius:8px;border:1px dashed #eee;background:#fbfbfb;margin-bottom:12px;}
+.checkbox{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;}
+.btn{
+display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:0;font-weight:600;
+background:var(--accent);color:white;text-decoration:none;cursor:pointer;
+}
+.btn[disabled]{opacity:0.6;cursor:not-allowed;}
+.whatsapp-icon{width:18px;height:18px;display:inline-block;}
+.muted{color:var(--muted);font-size:13px;margin-top:8px;}
+footer{margin-top:18px;font-size:13px;color:var(--muted);text-align:center;}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="logo">LM</div>
+<div>
+<h1>Lash Extensions Booking</h1>
+<p class="lead">Read booking rules below and confirm your appointment via WhatsApp.</p>
+</div>
+</header>
+
+<div class="grid">
+<main class="card">
+<form id="bookingForm" onsubmit="return openWhatsApp();">
+<label for="service">Service</label>
+<select id="service" required>
+<option value="Classic Lash Extensions">Classic Lash Extensions</option>
+<option value="2D–3D Volume Lashes">2D–3D Volume Lashes</option>
+<option value="Lash Lift & Tint">Lash Lift & Tint</option>
+<option value="Refill / Touch-up">Refill / Touch-up</option>
+</select>
+
+<div class="row">
+<div>
+<label for="name">Name</label>
+<input id="name" type="text" placeholder="Your name" required/>
+</div>
+<div>
+<label for="phone">Phone</label>
+<input id="phone" type="tel" placeholder="+971..." required/>
+</div>
+</div>
+
+<div class="row">
+<div>
+<label for="date">Preferred Date</label>
+<input id="date" type="date" />
+</div>
+<div>
+<label for="time">Preferred Time</label>
+<input id="time" type="time" />
+</div>
+</div>
+
+<label for="notes">Notes (allergies, style preference, etc.)</label>
+<textarea id="notes" placeholder="Example: I want a natural look"></textarea>
+
+<div class="terms">
+<strong>Booking Rules for Eyelash Extensions</strong>
+<ul>
+<li><strong>Deposit:</strong> A deposit of 100 AED is required to confirm your appointment. This amount is applied to your service and non-refundable in case of late cancellation.</li>
+<li><strong>Rescheduling & Cancellation:</strong> Please reschedule or cancel at least 24 hours in advance. Late cancellations forfeit the deposit.</li>
+<li><strong>Late Arrivals:</strong> If you are more than 20 minutes late, the appointment may be shortened or rescheduled. The deposit will not be refunded.</li>
+<li><strong>Hygiene:</strong> Arrive with clean, makeup-free eyes for best results. Appointments may be rescheduled if you have eye conditions (e.g., conjunctivitis).</li>
+<li><strong>Children & Guests:</strong> Please avoid bringing young children for safety and comfort.</li>
+<li><strong>Confirmation:</strong> Your appointment is confirmed once the deposit is received and you get a confirmation message.</li>
+</ul>
+<p class="muted">By clicking the button below, you agree to the booking rules above.</p>
+</div>
+
+<div class="checkbox">
+<input id="agree" type="checkbox" />
+<label for="agree">I agree to the booking rules</label>
+</div>
+
+<button id="waButton" class="btn" type="submit" disabled>
+<span class="whatsapp-icon">💬</span>
+Send via WhatsApp
+</button>
+<p class="muted">The button will open WhatsApp and pre-fill your booking message.</p>
+</form>
+</main>
+
+<aside class="sidebar card">
+<h3>How it works</h3>
+<ol style="padding-left:18px;">
+<li>Fill out the form.</li>
+<li>Check the box to confirm you’ve read the booking rules.</li>
+<li>Click “Send via WhatsApp” to message your booking request directly.</li>
+</ol>
+
+<h3 style="margin-top:14px;">Contact</h3>
+<p style="color:var(--muted);font-size:14px;">
+WhatsApp: <strong>+971 52 803 9975</strong><br/>
+Location: Dubai, UAE
+</p>
+</aside>
+</div>
+
+<footer>
+<small>© LashMaster Dubai — Booking Page</small>
+</footer>
+</div>
+
+<script>
+const PHONE_NUMBER = '971528039975';
+const agree = document.getElementById('agree');
+const waButton = document.getElementById('waButton');
+const nameInput = document.getElementById('name');
+const phoneInput = document.getElementById('phone');
+const serviceInput = document.getElementById('service');
+const dateInput = document.getElementById('date');
+const timeInput = document.getElementById('time');
+const notesInput = document.getElementById('notes');
+
+agree.addEventListener('change', ()=> {
+waButton.disabled = !agree.checked;
+});
+
+function openWhatsApp(){
+if (waButton.disabled) return false;
+
+const name = nameInput.value.trim() || 'Not provided';
+const clientPhone = phoneInput.value.trim() || 'Not provided';
+const service = serviceInput.value;
+const date = dateInput.value || 'Not specified';
+const time = timeInput.value || 'Not specified';
+const notes = notesInput.value.trim() || '—';
+
+const message =
+`Hello! 👋 I would like to book a lash appointment.%0A%0A` +
+`*Service:* ${service}%0A*Name:* ${name}%0A*Client Phone:* ${clientPhone}%0A` +
+`*Preferred Date:* ${date}%0A*Preferred Time:* ${time}%0A` +
+`*Notes:* ${notes}%0A%0AI have read and agree to the booking rules.`;
+
+const url = `https://wa.me/${PHONE_NUMBER}?text=${message}`;
+window.open(url, '_blank');
+return false;
+}
+</script>
+</body>
+</html>
