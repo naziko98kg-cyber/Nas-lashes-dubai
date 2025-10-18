@@ -1,103 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nas Lashes Dubai</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nas Lashes Dubai — Booking</title>
+<meta name="description" content="Nas Lashes Dubai — booking rules, prices and WhatsApp booking" />
 <style>
-body {
-margin: 0;
-font-family: "Didot", "Playfair Display", serif;
-background: linear-gradient(to bottom right, #d7f8f4, #e9fff8);
-color: #222;
-text-align: center;
-overflow-x: hidden;
+:root{
+--mint-1:#dff9f3;
+--mint-2:#e9fff8;
+--card-bg: rgba(255,255,255,0.85);
+--text:#111;
+--muted:#666;
+--accent:#25D366;
+--radius:14px;
+--maxwidth:920px;
+font-family: "Playfair Display", Georgia, serif;
 }
-
-/* Фоновое изображение */
-.background {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-image: url('9B316826-C698-4CD8-945E-93B832CC681A.jpeg');
-background-size: cover;
-background-position: center;
-opacity: 0.25;
-z-index: -1;
+html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--mint-1),var(--mint-2));color:var(--text);}
+.bg-photo{
+position:fixed;inset:0;background-image:url('background.jpg');background-size:cover;background-position:center;opacity:0.18;filter:blur(0.6px);z-index:0;
 }
-
-.logo {
-margin-top: 40px;
-}
-
-.logo img {
-width: 180px;
-}
-
-h1 {
-font-size: 28px;
-margin-top: 10px;
-letter-spacing: 2px;
-}
-
-.price {
-background-color: rgba(255, 255, 255, 0.7);
-display: inline-block;
-padding: 25px 40px;
-border-radius: 12px;
-margin-top: 40px;
-font-size: 20px;
-line-height: 1.8;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.whatsapp-btn {
-display: inline-block;
-margin-top: 35px;
-padding: 14px 28px;
-background-color: #25D366;
-color: white;
-text-decoration: none;
-border-radius: 30px;
-font-size: 18px;
-transition: 0.3s;
-}
-
-.whatsapp-btn:hover {
-background-color: #1da851;
-}
-
-footer {
-margin-top: 60px;
-font-size: 14px;
-color: #555;
+.wrap{position:relative;z-index:2;max-width:var(--maxwidth);margin:32px auto;padding:28px;box-sizing:border-box;}
+.header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:18px}
+.logo img{width:150px;height:auto;object-fit:contain;display:block}
+h1.site-title{margin:0;font-size:30px;letter-spacing:2px;color:#000;font-weight:600}
+/* main card styles */
+.card{background:var(--card-bg);border-radius:var(--radius);padding:18px;box-shadow:0 8px 30px rgba(13,12,15,0.06);margin-bottom:20px}
+.section-title{font-family: Georgia, "Times New Roman", serif;font-size:18px;margin:0 0 10px 0}
+.rules{font-family: Arial, Helvetica, sans-serif;color:var(--muted);font-size:14px;line-height:1.5}
+.rules ul{padding-left:18px;margin-top:8px}
+.price-list{display:block;text-align:center;padding:22px;border-radius:12px}
+.price-item{font-family: "Playfair Display", Georgia, serif;font-size:20px;margin:12px 0}
+.photo-block{margin-top:12px;border-radius:12px;overflow:hidden}
+.photo-block img{width:100%;height:auto;display:block;object-fit:cover}
+.actions{display:flex;justify-content:center;margin-top:18px}
+.wa-btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 26px;border-radius:30px;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(37,211,102,0.18)}
+.wa-btn:hover{transform:translateY(-2px)}
+footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+/* responsive */
+@media (max-width:600px){
+h1.site-title{font-size:26px}
+.logo img{width:130px}
+.price-item{font-size:18px}
+.wrap{padding:18px}
 }
 </style>
 </head>
 <body>
+<div class="bg-photo" aria-hidden="true"></div>
 
-<div class="background"></div>
-
-<div class="logo">
-<img src="8540DA78-D82B-4907-8424-A19ED3AF4774.jpeg" alt="Nas Lashes Dubai Logo">
+<main class="wrap" role="main">
+<!-- Header: logo + title -->
+<header class="header" aria-label="Site header">
+<div class="logo" role="img" aria-label="Nas Lashes Dubai logo">
+<!-- Make sure file name is exactly logo.jpg in the repository -->
+<img src="logo.jpg" alt="Nas Lashes Dubai Logo">
 </div>
+<h1 class="site-title">Nas Lashes Dubai</h1>
+</header>
 
-<h1>Nas Lashes Dubai</h1>
-
-<div class="price">
-<p><strong>Classic Volume:</strong> 300 AED</p>
-<p><strong>2D:</strong> 350 AED</p>
-<p><strong>2.5D–3D:</strong> 400 AED</p>
-<p><strong>3.5D–4D:</strong> 450 AED</p>
+<!-- Booking rules -->
+<section class="card" aria-labelledby="rules-title">
+<h2 id="rules-title" class="section-title">Booking Rules for Eyelash Extensions</h2>
+<div class="rules">
+<ul>
+<li><strong>Deposit:</strong> A deposit of 100 AED is required to confirm your appointment. This amount is applied to your service and non-refundable in case of late cancellation.</li>
+<li><strong>Rescheduling & Cancellation:</strong> Please reschedule or cancel at least 24 hours in advance. Late cancellations forfeit the deposit.</li>
+<li><strong>Late Arrivals:</strong> If you are more than 20 minutes late, the appointment may be shortened or rescheduled. The deposit will not be refunded.</li>
+<li><strong>Hygiene:</strong> Arrive with clean, makeup-free eyes for best results. Appointments may be rescheduled if you have eye conditions (e.g., conjunctivitis).</li>
+<li><strong>Children & Guests:</strong> Please avoid bringing young children for safety and comfort.</li>
+<li><strong>Confirmation:</strong> Your appointment is confirmed once the deposit is received and you get a confirmation message.</li>
+</ul>
 </div>
+</section>
 
-<a class="whatsapp-btn" href="https://wa.me/971528039975" target="_blank">Book via WhatsApp</a>
+<!-- Price -->
+<section class="card" aria-labelledby="price-title">
+<h2 id="price-title" class="section-title">Prices</h2>
+<div class="price-list">
+<div class="price-item"><strong>Classic Volume:</strong> 300 AED</div>
+<div class="price-item"><strong>2D:</strong> 350 AED</div>
+<div class="price-item"><strong>2.5D–3D:</strong> 400 AED</div>
+<div class="price-item"><strong>3.5D–4D:</strong> 450 AED</div>
+</div>
+</section>
+
+<!-- Photo block -->
+<section class="card photo-block" aria-labelledby="photo-title">
+<h2 id="photo-title" class="section-title">Example Work</h2>
+<!-- Make sure file name is exactly background.jpg in the repository -->
+<img src="background.jpg" alt="Example of lash extensions by Nas Lashes Dubai">
+</section>
+
+<!-- WhatsApp booking button -->
+<div class="actions">
+<a class="wa-btn" href="https://wa.me/971528039975?text=Hello!%20I%20would%20like%20to%20book%20a%20lash%20appointment." target="_blank" rel="noopener">
+Book via WhatsApp
+</a>
+</div>
 
 <footer>
-<p>© 2025 Nas Lashes Dubai. All rights reserved.</p>
+<small>© <span id="year"></span> Nas Lashes Dubai. All rights reserved.</small>
 </footer>
+</main>
 
+<script>
+// auto-year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
